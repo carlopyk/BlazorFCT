@@ -1,5 +1,7 @@
 ﻿@page "/filmdetails"
 @using Model
+@using Interfaces
+@inject IFilmService FilmService
 
 <h3>FilmDetails</h3>
 
@@ -19,8 +21,8 @@
         </tr>
         <tr>
             <td colspan="2" style="text-align:center">
-                <input type="submit" value="Save" />
-                <input type="button" value="Cancel" @onClick="CancelFilm"/>
+                <input type="submit" value="Save"  @onclick="SaveFilm" />
+                <input type="button" value="Cancel" @onclick="CancelFilm" />
             </td>
         </tr>
     </table>
@@ -32,5 +34,10 @@
     protected void CancelFilm()
     {
 
+    }
+        
+    protected async Task SaveFilm()
+    {
+        await FilmService.SaveFilm(film);
     }
 }
