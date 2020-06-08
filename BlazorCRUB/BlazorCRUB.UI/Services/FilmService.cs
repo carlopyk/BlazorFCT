@@ -40,7 +40,7 @@ namespace BlazorCRUB.UI.Services
             if (film.Id == 0)
                 return _filmRepository.InsertFilm(film);
             else
-                return null;
+                return _filmRepository.UpdateFilm(film);
         }
     }
 }

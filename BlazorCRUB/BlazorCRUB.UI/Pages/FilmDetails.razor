@@ -3,6 +3,7 @@
 @using Model
 @using Interfaces
 @inject IFilmService FilmService
+@inject NavigationManager NavigationManager
 
 <h3>FilmDetails</h3>
 
@@ -37,12 +38,14 @@
 
     protected void CancelFilm()
     {
-
+        NavigationManager.NavigateTo("/filmlist");
     }
 
     protected async Task SaveFilm()
     {
         await FilmService.SaveFilm(film);
+        
+        NavigationManager.NavigateTo("/filmlist");
     }
 
     protected override async Task OnInitializedAsync()
